@@ -18,12 +18,16 @@ public class LoginTests extends BaseTest {
         // Pre-condition
         // Added ChromeOptions argument below to fix websocket error
         options.addArguments("--remote-allow-origins=*");
+        /**
+         * *this is a change
+         */
 
         WebDriver driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         // Steps
         String url = "https://qa.koel.app/";
+
         driver.get(url);
 
         WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));
