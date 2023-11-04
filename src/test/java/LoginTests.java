@@ -103,7 +103,7 @@ public class LoginTests extends BaseTest {
                     driver.get(url);
                     navigateToPage();
                     provideEmail("demo@class.com");
-                    providePassword("");
+                    providePassword("te$tStudent");
                     clickSubmit();
 
                     WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));
