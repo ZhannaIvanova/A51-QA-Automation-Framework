@@ -99,11 +99,11 @@ public class LoginTests extends BaseTest {
 
 
                     // Steps
-                    String url = "https://qa.koel.app/";
+                    String url = "https://qa.koel.app";
                     driver.get(url);
                     navigateToPage();
-                    provideEmail("demo@class.com");
-                    providePassword("te$tStudent");
+                    provideEmail("zhanna.ivanova@testpro.io");
+                    providePassword("12345678");
                     clickSubmit();
 
                     WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));
