@@ -43,7 +43,7 @@ public class Homework17 extends BaseTest {
             Thread.sleep(2000);
         }
         public void choosePlaylist() throws InterruptedException {
-            WebElement playlist  = driver.findElement(By.xpath("//section[@class='existing-playlists']//li[@class='top-queue']"));
+            WebElement playlist  = driver.findElement(By.xpath("//section[@id='songResultWrapper']//li[contains(text(),'Love')]"));
             playlist.click();
             Thread.sleep(2000);
         }
