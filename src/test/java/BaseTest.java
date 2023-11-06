@@ -32,7 +32,7 @@ import java.util.UUID;
     public void closeBrowser() {
         driver.quit();
     }
-    public void navigateToPage() {
+    public void navigateToLoginPage() {
         driver.get(url);
     }
     public void provideEmail(String email) {
