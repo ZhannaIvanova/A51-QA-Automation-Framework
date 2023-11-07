@@ -18,6 +18,7 @@ public class Homework17 extends BaseTest {
         selectFirstSongResult();
         clickAddToBtn();
         choosePlaylist();
+        Thread.sleep(2000);
         Assert.assertEquals(getAddToPlayListSuccessMsg(), expectedSongAddedMessege);
     }
 
@@ -38,6 +39,7 @@ public class Homework17 extends BaseTest {
     }
 
     public void clickAddToBtn () throws InterruptedException {
+        Thread.sleep(2000);
             WebElement addToButton = driver.findElement(By.xpath("//section[@id='songResultsWrapper']//button[@data-test='add-to-btn']"));
             addToButton.click();
             Thread.sleep(2000);
@@ -47,7 +49,8 @@ public class Homework17 extends BaseTest {
             playlist.click();
             Thread.sleep(2000);
         }
-        public String getAddToPlayListSuccessMsg() {
+        public String getAddToPlayListSuccessMsg() throws InterruptedException {
+        Thread.sleep(2000);
         WebElement notification = driver.findElement(By.cssSelector("div.success.show"));
         return notification.getText();
         }
