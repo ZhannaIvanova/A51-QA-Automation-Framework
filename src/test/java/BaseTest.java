@@ -27,6 +27,7 @@ import java.util.UUID;
 
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        navigateToLoginPage();
     }
     @AfterMethod
     public void closeBrowser() {
