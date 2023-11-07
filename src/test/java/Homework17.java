@@ -7,8 +7,8 @@ public class Homework17 extends BaseTest {
 
     @Test
     public void addSongToPlaylist() throws InterruptedException {
-        String expectedSongAddedMessege = "Added 1 song into \"Test Pro Playlist.\" ";
-        navigateToPage();
+        String expectedSongAddedMessege = "Added 1 song into \"Love.\" ";
+        navigateToLoginPage();
         provideEmail("zhanna.ivanova@testpro.io");
         providePassword("12345678");
         clickSubmit();
@@ -50,7 +50,6 @@ public class Homework17 extends BaseTest {
             Thread.sleep(2000);
         }
         public String getAddToPlayListSuccessMsg() throws InterruptedException {
-        Thread.sleep(2000);
         WebElement notification = driver.findElement(By.cssSelector("div.success.show"));
         return notification.getText();
         }

@@ -42,7 +42,7 @@ public class LoginTests extends BaseTest {
 
             WebElement submit = driver.findElement(By.cssSelector("button[type='submit']"));
             submit.click();
-            navigateToPage();
+            navigateToLoginPage();
             provideEmail("invalid@class.com");
             providePassword("te$t$tudent");
             clickSubmit();
@@ -85,7 +85,7 @@ public class LoginTests extends BaseTest {
 
                 // Post-condition
                 driver.quit();
-                navigateToPage();
+                navigateToLoginPage();
                 provideEmail("demo@class.com");
                 providePassword("te$t$tudent");
                 clickSubmit();
@@ -105,7 +105,7 @@ public class LoginTests extends BaseTest {
                     // Steps
                     String url = "https://qa.koel.app";
                     driver.get(url);
-                    navigateToPage();
+                    navigateToLoginPage();
                     provideEmail("zhanna.ivanova@testpro.io");
                     providePassword("12345678");
                     clickSubmit();

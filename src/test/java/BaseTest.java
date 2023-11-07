@@ -27,12 +27,13 @@ import java.util.UUID;
 
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        navigateToLoginPage();
     }
     @AfterMethod
     public void closeBrowser() {
         driver.quit();
     }
-    public void navigateToPage() {
+    public void navigateToLoginPage() {
         driver.get(url);
     }
     public void provideEmail(String email) {
