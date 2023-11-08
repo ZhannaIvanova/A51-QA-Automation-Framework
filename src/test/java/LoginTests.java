@@ -22,8 +22,8 @@ public class LoginTests extends BaseTest {
     public void loginValidEmailPassword() {
         //Steps
         navigateToLoginPage();
-        provideEmail("demo@class.com");
-        providePassword("te$t$tudent");
+        provideEmail("zhanna.ivanova@testpro.io");
+        providePassword("12345678");
         clickSubmit();
         WebElement avatar = driver.findElement(By.cssSelector("img[class='avatar']"));
         //Expected Result
@@ -34,7 +34,7 @@ public class LoginTests extends BaseTest {
     public void loginInvalidEmailValidPassword() {
         navigateToLoginPage();
         provideEmail("invalidemail@class.com");
-        providePassword("te$t$tudent");
+        providePassword("12345678");
         clickSubmit();
         WebElement avatar = driver.findElement(By.cssSelector("img[class='avatar']"));
         //Expected Result
@@ -46,7 +46,7 @@ public class LoginTests extends BaseTest {
         //Pr-Conditions
 
         navigateToLoginPage();
-        provideEmail("invalidemail@class.com");
+        provideEmail("zhanna.ivanova@testpro.io");
         clickSubmit();
 
         WebElement avatar = driver.findElement(By.cssSelector("img[class='avatar']"));

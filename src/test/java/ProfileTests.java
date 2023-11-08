@@ -11,14 +11,14 @@ public class ProfileTests extends BaseTest {
     public void changeProfileName() throws InterruptedException {
         navigateToLoginPage();
         //Login
-        provideEmail("demo@class.com");
-        providePassword("te$t$tudent");
+        provideEmail("zhanna.ivanova@testpro.io");
+        providePassword("12345678");
         clickSubmit();
         //Wait for 2 Seconds
         Thread.sleep(2000);
         //Click on Avatar to go to Profile Page
         clickAvatar();
-        provideCurrentPassword("te$t$tudent");
+        provideCurrentPassword("12345678");
         //Enter Random Name
         String randomName = generateRandomName();
         provideProfileName(randomName);
