@@ -18,7 +18,6 @@ public class Homework17 extends BaseTest {
         selectFirstSongResult();
         clickAddToBtn();
         choosePlaylist();
-        Thread.sleep(2000);
         Assert.assertEquals(getAddToPlayListSuccessMsg(), expectedSongAddedMessege);
     }
 
@@ -26,28 +25,32 @@ public class Homework17 extends BaseTest {
         WebElement searchField = driver.findElement(By.cssSelector("div#searchForm input[type='search']"));
         searchField.sendKeys(name);
         Thread.sleep(2000);
+
     }
     public void clickViewAllBtn() throws InterruptedException {
         WebElement viewAll = driver.findElement(By.xpath("//button[@data-test='view-all-songs-btn']"));
         viewAll.click();
         Thread.sleep(2000);
+
     }
     public void selectFirstSongResult() throws InterruptedException {
         WebElement firstSong = driver.findElement(By.xpath("//section[@id='songResultsWrapper']//tr[@class='song-item'][1]"));
         firstSong.click();
         Thread.sleep(2000);
+
     }
 
     public void clickAddToBtn () throws InterruptedException {
-        Thread.sleep(2000);
             WebElement addToButton = driver.findElement(By.xpath("//section[@id='songResultsWrapper']//button[@data-test='add-to-btn']"));
             addToButton.click();
-            Thread.sleep(2000);
+        Thread.sleep(2000);
+
         }
         public void choosePlaylist() throws InterruptedException {
             WebElement playlist  = driver.findElement(By.xpath("//section[@id='songResultsWrapper']//li[contains(text(),'Love')]"));
             playlist.click();
             Thread.sleep(2000);
+
         }
         public String getAddToPlayListSuccessMsg() throws InterruptedException {
         WebElement notification = driver.findElement(By.cssSelector("div.success.show"));
