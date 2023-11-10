@@ -1,130 +1,83 @@
-
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
+import org.testng.Reporter;
 import org.testng.annotations.Test;
-import java.time.Duration;
-
-import java.time.Duration;
 
 public class LoginTests extends BaseTest {
-    ChromeOptions options = new ChromeOptions();
+
+
+    @Test(dataProvider = "LoginData")
+    public void loginTests(String email, String password) throws InterruptedException {
+        navigateToLoginPage();
+        provideEmail(email);
+        providePassword(password);
+        clickSubmit();
+        Thread.sleep(2000);
+        //https://qa.koel.app/#!/home
+        Assert.assertEquals(driver.getCurrentUrl(), url);
+    }
 
     @Test
     public void loginValidEmailPassword(){
-        // Pre-condition
-        // Added ChromeOptions argument below to fix websocket error
-        options.addArguments("--remote-allow-origins=*");
-        /**
-         * *this is a change
-         */
+        //Steps
+        navigateToLoginPage();
+        provideEmail("demo@class.com");
+        providePassword("te$t$tudent");
+        clickSubmit();
+        WebElement avatar = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("img[class='avatar']")));
+        //WebElement avatar = driver.findElement(By.cssSelector("img[class='avatar']"));
+        //Expected Result
+        Assert.assertTrue(avatar.isDisplayed());
+    }
 
-        WebDriver driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+    @Test
+    public void loginInvalidEmailValidPassword(){
+        navigateToLoginPage();
+        provideEmail("invalidemail@class.com");
+        providePassword("te$t$tudent");
+        clickSubmit();
+        WebElement avatar = driver.findElement(By.cssSelector("img[class='avatar']"));
+        //Expected Result
+        Assert.assertTrue(avatar.isDisplayed());
+    }
 
-        // Steps
-        String url = "https://qa.koel.app/";
+    @Test
+    public void loginValidEmailNoPassword() throws InterruptedException{
+        //Pr-Conditions
 
-        driver.get(url);
+        navigateToLoginPage();
+        provideEmail("invalidemail@class.com");
+        clickSubmit();
 
-        WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));
-        emailField.clear();
-        emailField.sendKeys("demo@class.com");
+        WebElement avatar = driver.findElement(By.cssSelector("img[class='avatar']"));
+        //Expected Result
+        Assert.assertTrue(avatar.isDisplayed());
+    }
 
-        WebElement passwordField = driver.findElement(By.cssSelector("input[type='password']"));
-        passwordField.clear();
-        passwordField.sendKeys("te$t$tudent");
+    @Test(dataProvider = "excel-data")
+    public void loginWithExcelData(String email, String password){
+        try{
+            //Step 1 Enter EMail
+            Thread.sleep(2000);
+            provideEmail(email);
+            //Step 2: Enter Password
+            providePassword(password);
+            Thread.sleep(2000);
 
-
-
-            WebElement submit = driver.findElement(By.cssSelector("button[type='submit']"));
-            submit.click();
-            navigateToPage();
-            provideEmail("invalid@class.com");
-            providePassword("te$t$tudent");
+            //Step 3: Click on Submit.
             clickSubmit();
+            Thread.sleep(2000);
 
-            WebElement avatarIcon = driver.findElement(By.cssSelector("img[class='avatar']"));
-            // Expected Result
-            Assert.assertTrue(avatarIcon.isDisplayed());
+            WebElement avatar = driver.findElement(By.cssSelector("img[class='avatar']"));
+            //Expected Result
+            Assert.assertTrue(avatar.isDisplayed());
 
-            driver.quit();
-            Assert.assertEquals(driver.getCurrentUrl(), url); //https://qa.koel.app/
+        } catch(Exception e){
+            Reporter.log("Unable to login with Excel Data for an unknown reason." +e);
         }
-
-        @Test
-        public void loginInvalidEmailValidPassword() throws InterruptedException {
-            // Pre-condition
-            // Added ChromeOptions argument below to fix websocket error
-            options.addArguments("--remote-allow-origins=*");
-
-            WebDriver driver = new ChromeDriver(options);
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
-            String url = "https://qa.koel.app/";
-            driver.get(url);
-
-            // Steps
-            WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));
-            emailField.clear();
-            emailField.sendKeys("invalid@class.com");
-
-            WebElement passwordField = driver.findElement(By.cssSelector("input[type='password']"));
-            passwordField.clear();
-            passwordField.sendKeys("te$t$tudent");
-
-            WebElement submit = driver.findElement(By.cssSelector("button[type='submit']"));
-            submit.click();
-
-            Thread.sleep(2000); // Sleep or pause for 2 seconds (adjust as needed)
-            // Expected Result
-            Assert.assertEquals(driver.getCurrentUrl(), url); // https://qa.koel.app/
-
-                // Post-condition
-                driver.quit();
-                navigateToPage();
-                provideEmail("demo@class.com");
-                providePassword("te$t$tudent");
-                clickSubmit();
-                isAvatarDisplayed();
-            }
-
-            @Test
-            public void loginValidEmailEmptyPassword() throws InterruptedException {
-                // Pre-condition
-                // Added ChromeOptions argument below to fix websocket error
-                options.addArguments("--remote-allow-origins=*");
-
-                WebDriver driver = new ChromeDriver(options);
-                driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+    }
 
 
-                    // Steps
-                    String url = "https://qa.koel.app";
-                    driver.get(url);
-                    navigateToPage();
-                    provideEmail("zhanna.ivanova@testpro.io");
-                    providePassword("12345678");
-                    clickSubmit();
-
-                    WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));
-                    emailField.clear();
-                    emailField.sendKeys("demo@class.com");
-
-                    WebElement submit = driver.findElement(By.cssSelector("button[type='submit']"));
-                    submit.click();
-
-
-                    Thread.sleep(2000); // Sleep or pause for 2 seconds (adjust as needed)
-                    // Expected Result
-                    Assert.assertEquals(driver.getCurrentUrl(), url); //https://qa.koel.app/
-
-                    // Post-condition
-                    driver.quit();
-                }
-
-            }
-
+}
