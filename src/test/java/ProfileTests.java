@@ -15,7 +15,6 @@ public class ProfileTests extends BaseTest {
         providePassword("12345678");
         clickSubmit();
         //Wait for 2 Seconds
-        Thread.sleep(2000);
         //Click on Avatar to go to Profile Page
         clickAvatar();
         provideCurrentPassword("12345678");
