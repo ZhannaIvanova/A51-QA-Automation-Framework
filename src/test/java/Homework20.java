@@ -22,7 +22,6 @@ public class Homework20 extends BaseTest {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement emptyPlaylist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".playlist:nth-child(3)")));
         emptyPlaylist.click();
-        emptyPlaylist.sendKeys();
     }
     public void clickDeletePlaylistBtn() throws InterruptedException {
         //WebElement deletePlaylist = driver.findElement(By.cssSelector(".btn-delete-playlist"));
