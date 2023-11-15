@@ -11,25 +11,25 @@ import java.time.Duration;
 
 public class BasePage {
 
-    WebDriver driver;
+   protected WebDriver driver;
 
-    WebDriverWait wait;
+    protected static WebDriverWait wait;
 
-    Actions actions;
+    protected static Actions actions;
 
-    public BasePage(WebDriver givenDriver) {
+    BasePage(WebDriver givenDriver) {
         driver = givenDriver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         actions = new Actions(driver);
     }
 
-    public WebElement findElement(By locator) {
+    public static WebElement findElement(By locator) {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
     public void click( By locator) {
         findElement(locator).click();
     }
-    public void doubleClick( By locator) {
+    public static void doubleClick(By locator) {
         actions.doubleClick(findElement(locator)).perform();
     }
 }

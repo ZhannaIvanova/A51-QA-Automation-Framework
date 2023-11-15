@@ -11,15 +11,15 @@ public class HomePage extends BasePage {
         super(givenDriver);
     }
 
-    By firstPlaylist = By.cssSelector(".playlist:nth-child(3)");
-    By playlistNameField = By.cssSelector("[name='name']");
+     static By firstPlaylist = By.cssSelector(".playlist:nth-child(3)");
+     static By playlistNameField  = By.cssSelector("[name='name']");
     By renamePlaylistSuccessMsg = By.cssSelector("div.success.show");
 
 
-    public void doubleClickPlaylist() {
+    public static void doubleClickPlaylist() {
         doubleClick(firstPlaylist);
     }
-    public void enterNewPlaylistName(String playlistName) {
+    public static void enterNewPlaylistName(String playlistName) {
         findElement(playlistNameField).sendKeys(Keys.chord(Keys.CONTROL, "a",Keys.BACK_SPACE));
         findElement(playlistNameField).sendKeys(playlistName);
         findElement(playlistNameField).sendKeys(Keys.ENTER);
