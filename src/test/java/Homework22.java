@@ -12,8 +12,8 @@ public class Homework22 extends BaseTest{
         HomePage homePage = new HomePage(driver);
 
         loginPage.login();
-        HomePage.doubleClickPlaylist();
-        HomePage.enterNewPlaylistName(newPlaylistName);
+        homePage.doubleClickPlaylist();
+        homePage.enterNewPlaylistName(newPlaylistName);
         Assert.assertEquals(homePage.getRenamePlaylistSuccessMsg(), updatedPlaylistMsg);
     }
 }
