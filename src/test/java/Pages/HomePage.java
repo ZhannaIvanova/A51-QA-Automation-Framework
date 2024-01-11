@@ -24,8 +24,8 @@ public class HomePage extends BasePage {
         findElement(playlistNameField).sendKeys(playlistName);
         findElement(playlistNameField).sendKeys(Keys.ENTER);
     }
-    public String getRenamePlaylistSuccessMsg() {
-        return findElement(renamePlaylistSuccessMsg).getText();
+    public String getRenameSuccessMsg() {
+        return findElement(displayedSuccessMsg).getText();
     }
 
 
