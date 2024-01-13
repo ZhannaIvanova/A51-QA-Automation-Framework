@@ -7,10 +7,9 @@ import org.openqa.selenium.WebDriver;
 public class HomePage extends BasePage {
 
 
-
-
-     By firstPlaylist = By.cssSelector(".playlist:nth-child(3)");
-     By playlistNameField  = By.cssSelector("[name='name']");
+    public By  updatedPlayListMsg = By.cssSelector("[name='Love1']");
+    By firstPlaylist = By.cssSelector(".playlist:nth-child(3)");
+     By playlistNameField  = By.cssSelector("[name='Love']");
     By renamePlaylistSuccessMsg = By.cssSelector("div.success.show");
 
     public HomePage (WebDriver givenDriver) { super(givenDriver);}
@@ -24,8 +23,8 @@ public class HomePage extends BasePage {
         findElement(playlistNameField).sendKeys(playlistName);
         findElement(playlistNameField).sendKeys(Keys.ENTER);
     }
-    public String getRenameSuccessMsg() {
-        return findElement(displayedSuccessMsg).getText();
+    public String getrenamePlaylistSuccessMsg() {
+        return findElement(renamePlaylistSuccessMsg).getText();
     }
 
 

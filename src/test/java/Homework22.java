@@ -3,16 +3,19 @@ import Pages.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class Homework22 extends BaseTest{
+public class Homework22 extends BaseTest {
     @Test
-    public void renamePlaylist(){
-        String newPlaylistName = "Love";
-        String updatedPlaylistMsg = "Updated playlist\"Love.\"";
+    public void renamePlaylist() {
+        String newPlaylistName = "Love1";
+        String updatedPlaylistMsg = "Updated playlist\"Love1.\"";
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
 
         loginPage.login();
         homePage.doubleClickPlaylist();
         homePage.enterNewPlaylistName(newPlaylistName);
-        Assert.assertEquals(homePage.getRenamePlaylistSuccessMsg());
+        Assert.assertEquals(homePage.getrenamePlaylistSuccessMsg(), homePage.updatedPlayListMsg);
     }
+
+    }
+

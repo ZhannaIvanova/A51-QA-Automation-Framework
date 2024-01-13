@@ -15,10 +15,12 @@ public class LoginPage extends BasePage{
     By submitBtn = By.cssSelector("button[type='submit']");
 
     public void provideEmail(String email){
+
         findElement(emailField).sendKeys(email);
     }
 
     public void providePassword(String password){
+
         findElement(passwordField).sendKeys(password);
     }
 
