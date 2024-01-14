@@ -9,7 +9,7 @@ public class HomePage extends BasePage {
 
     public By  updatedPlayListMsg = By.cssSelector("[name='Love1']");
     By firstPlaylist = By.cssSelector(".playlist:nth-child(3)");
-     By playlistNameField  = By.cssSelector("[name='Love']");
+     By playlistNameField  = By.cssSelector("[name='name']");
     By renamePlaylistSuccessMsg = By.cssSelector("div.success.show");
 
     public HomePage (WebDriver givenDriver) { super(givenDriver);}
@@ -26,6 +26,7 @@ public class HomePage extends BasePage {
     public String getrenamePlaylistSuccessMsg() {
         return findElement(renamePlaylistSuccessMsg).getText();
     }
+
 
 
 }
