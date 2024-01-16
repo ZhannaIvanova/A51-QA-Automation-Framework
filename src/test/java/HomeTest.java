@@ -1,9 +1,13 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import Pages.AllSongsPage;
+import Pages.HomePage;
+import Pages.LoginPage;
 
 import java.util.List;
 
@@ -13,7 +17,7 @@ public class HomeTest extends BaseTest{
 
 
     //Tests Start here
-    @Test
+/*    @Test
     public void playSongWithContextClick() throws InterruptedException {
         // Login
         provideEmail("demo@class.com");
@@ -27,9 +31,26 @@ public class HomeTest extends BaseTest{
         choosePlayOption();
         //Assertion
         Assert.assertTrue(isSongPlaying());
-    }
+    }*/
 
     @Test
+    public void playSong() throws InterruptedException {
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+        AllSongsPage songsPage = new AllSongsPage(driver);
+        // Login
+        loginPage.provideEmail("demo@class.com");
+        loginPage.providePassword("te$t$tudent");
+        loginPage.clickSubmit();
+        Thread.sleep(2000);
+        homePage.chooseAllSongsList();
+        songsPage.contextClickFirstSong();
+        songsPage.choosePlayOption();
+        //Assertion
+        Assert.assertTrue(songsPage.isSongPlaying());
+    }
+
+/*    @Test
     public void hoverOverPlayButton() throws InterruptedException {
         //Login
         provideEmail("demo@class.com");
@@ -38,13 +59,27 @@ public class HomeTest extends BaseTest{
         //Thread.sleep(2000);
         //Assertion
         Assert.assertTrue(hoverPlay().isDisplayed());
+    }*/
+
+    @Test
+    public void hoverOverPlayBtn() throws InterruptedException {
+        //Login
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+
+        loginPage.provideEmail("zhanna.ivanova@testpro.io");
+        loginPage.providePassword("12345678");
+        loginPage.clickSubmit();
+        Thread.sleep(2000);
+        //Assertion
+        Assert.assertTrue(homePage.hoverPlay().isDisplayed());
     }
 
     @Test
     public void countSongsInPlaylist() throws InterruptedException {
         //Login
-        provideEmail("demo@class.com");
-        providePassword("te$t$tudent");
+        provideEmail("zhanna.ivanova@testpro.io");
+        providePassword("12345678");
         clickSubmit();
         Thread.sleep(2000);
         //choose playlist by name
@@ -64,8 +99,8 @@ public class HomeTest extends BaseTest{
         String updatedPlaylistMsg = "Updated playlist \"Sample Edited Playlist.\"";
 
         //Login
-        provideEmail("demo@class.com");
-        providePassword("te$t$tudent");
+        provideEmail("zhanna.ivanova@testpro.io");
+        providePassword("12345678");
         clickSubmit();
         Thread.sleep(2000);
         //double click
@@ -122,31 +157,7 @@ public class HomeTest extends BaseTest{
     }
 
 
-    public WebElement hoverPlay() throws InterruptedException {
-        //WebElement play = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[data-testid='play-btn']")));
-        WebElement play = driver.findElement(By.cssSelector("[data-testid='play-btn']"));
-        actions.moveToElement(play).perform();
-        return  wait.until(ExpectedConditions.visibilityOf(play));
-    }
 
-
-    public void chooseAllSongsList(){
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("li a.songs"))).click();
-    }
-
-    public void contextClickFirstSong(){
-        WebElement firstSongElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".all-songs tr.song-item:nth-child(1)")));
-        actions.contextClick(firstSongElement).perform();
-    }
-
-    public void choosePlayOption(){
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("li.playback"))).click();
-    }
-
-    public boolean isSongPlaying(){
-        WebElement soundBarVisualizer = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[data-testid= 'sound-bar-play']")));
-        return soundBarVisualizer.isDisplayed();
-    }
 
 
 }

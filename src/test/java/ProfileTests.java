@@ -9,13 +9,13 @@ public class ProfileTests extends BaseTest {
 
     @Test
     public void changeProfileName() throws InterruptedException {
-        navigateToLoginPage();
+        //navigateToLoginPage();
         //Login
         provideEmail("zhanna.ivanova@testpro.io");
         providePassword("12345678");
         clickSubmit();
-        Thread.sleep(2000);
         //Wait for 2 Seconds
+        Thread.sleep(2000);
         //Click on Avatar to go to Profile Page
         clickAvatar();
         provideCurrentPassword("12345678");
