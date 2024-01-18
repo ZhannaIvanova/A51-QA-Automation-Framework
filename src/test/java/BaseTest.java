@@ -45,9 +45,9 @@ public class BaseTest {
     @DataProvider(name = "LoginData")
     public Object[][] getDataFromDataProvider() {
         return new Object[][]{
-                {"zhanna.ivanova@testpro.io", "12345678"},
-                {"invalidemail@class.com", "12345678"},
-                {"zhanna.ivanova@testpro.io", "InvalidPassword"},
+                {"demo@class.com", "te$t$tudent"},
+                {"invalidemail@class.com", "te$t$tudent"},
+                {"demo@class.com", "InvalidPassword"},
                 {"", ""}
         };
     }
@@ -181,5 +181,4 @@ public class BaseTest {
         }
         return data;
     }
-
 }

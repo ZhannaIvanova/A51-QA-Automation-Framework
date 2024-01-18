@@ -12,11 +12,11 @@ import java.time.Duration;
 
 public class BasePage {
 
-    WebDriver driver;
+    protected WebDriver driver;
 
-    WebDriverWait wait;
+    protected WebDriverWait wait;
 
-    Actions actions;
+    protected Actions actions;
 
     public BasePage(WebDriver givenDriver) {
         driver = givenDriver;
@@ -47,8 +47,8 @@ public class BasePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated( locator)).click();
     }
 
-    public WebElement enterNewPlaylistName(String love4, By locator) {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    public void enterNewPlaylistName(String love4, By locator) {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
     public String getRenamePlaylistSuccessMsg() {

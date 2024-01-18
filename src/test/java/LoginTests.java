@@ -57,6 +57,24 @@ public class LoginTests extends BaseTest {
         //Expected Result
         Assert.assertTrue(avatar.isDisplayed());
     }*/
+ public void provideEmail(String email) {
+     WebElement emailField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[type='email']")));
+     //WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));
+     emailField.clear();
+     emailField.sendKeys(email);
+ }
+
+    public void providePassword(String password) {
+        WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[type='password']")));
+        passwordField.clear();
+        passwordField.sendKeys(password);
+    }
+
+    public void clickSubmit() {
+        WebElement submit = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button[type='submit']")));
+        submit.click();
+    }
+
 
     @Test(dataProvider = "excel-data")
     public void loginWithExcelData(String email, String password){

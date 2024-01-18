@@ -1,17 +1,16 @@
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 import Pages.AllSongsPage;
 import Pages.HomePage;
 import Pages.LoginPage;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class HomeTest extends BaseTest{
+public class HomeTest extends BaseTest {
 
     String newPlaylistName = "Sample Edited Playlist";
 
@@ -49,6 +48,9 @@ public class HomeTest extends BaseTest{
         //Assertion
         Assert.assertTrue(songsPage.isSongPlaying());
     }
+
+
+
 
 /*    @Test
     public void hoverOverPlayButton() throws InterruptedException {
@@ -93,6 +95,8 @@ public class HomeTest extends BaseTest{
 
     }
 
+
+
     @Test
     public void renamePlayList() throws InterruptedException {
 
@@ -112,6 +116,7 @@ public class HomeTest extends BaseTest{
         //Assert
         Assert.assertEquals(getRenamePlaylistSuccessMsg(),updatedPlaylistMsg);
     }
+
 
     //Tests End here
 

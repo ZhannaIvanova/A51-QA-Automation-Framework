@@ -29,6 +29,7 @@ public class LoginPage extends BasePage{
     By passwordField = By.cssSelector("input[type='password']");
     By submitBtn = By.cssSelector("button[type='submit']");
 
+
     public void provideEmail(String email){
         findElement(emailField).sendKeys(email);
     }
@@ -40,8 +41,6 @@ public class LoginPage extends BasePage{
     public void clickSubmit(){
         findElement(submitBtn).click();
     }
-
-
 
     //Helper Methods using Page Factory
 
