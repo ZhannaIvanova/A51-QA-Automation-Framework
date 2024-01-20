@@ -12,8 +12,9 @@
             <class name="HomeTest"/>
            <!-- <class name="Homework20"/>
             <class name="Homework21"/>
-            <class name="Homework22"/>-->
-            <class name="Homework23"/>
+            <class name="Homework22"/>
+            <class name="Homework23"/>-->
+            <class name="Homework24"/>
         </classes>
     </test>
 </suite>
