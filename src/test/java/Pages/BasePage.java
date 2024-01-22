@@ -33,7 +33,7 @@ public class BasePage {
         actions.contextClick(locator).perform();
     }
 
-    protected void click() {
+    protected void click(WebElement locator) {
         wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 

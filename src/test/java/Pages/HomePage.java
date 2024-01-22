@@ -53,32 +53,32 @@ public class HomePage extends BasePage {
     }
 
     public HomePage searchField() {
-        searchField().click();
+        firsPlaylist.click();
         return this;
     }
 
     public HomePage provideViewAll() {
-        provideViewAll().click();
+        allSongs.clear();
         return this;
     }
 
     public HomePage choiceSong() {
-        choiceSong().click();
+        chooseCreateNewPlaylist.click();
         return this;
     }
 
     public HomePage addToList() {
-        addToList().click();
+        addNewPlaylist.click();
         return this;
     }
 
     public HomePage choiceList() {
-        choiceList().click();
+        playlistInputField.clear();
         return this;
     }
 
-    public boolean[] notificationMessage() {
-        notificationMessage();
-        return new boolean[0];
+    public String notificationMessage() {
+        notification.getText();
+        return null;
     }
 }

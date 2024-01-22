@@ -54,10 +54,10 @@ public class LoginPage extends BasePage {
         return this;
     }
 
-    public void provideEmailToLogin() {
-        provideEmailToLogin();
+//    public void provideEmailToLogin() {
+//        provideEmailToLogin("zhanna.ivanova@testpro.io");
+//    }
+//    public void providePasswordToLogin() {
+//        providePasswordToLogin();
     }
-    public void providePasswordToLogin() {
-        providePasswordToLogin();
-    }
-}
+

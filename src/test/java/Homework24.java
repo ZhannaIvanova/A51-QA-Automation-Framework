@@ -9,9 +9,7 @@ public class Homework24 extends BaseTest{
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
         String expectedSongAddedMessage = "Added 1 song into\"Love.\"";
-        loginPage .provideEmailToLogin("zhanna.ivanova@testpro.io")
-                .providePasswordToLogin("12345678")
-                .clickSubmitBtnToLogin();
+        loginPage .provideLoginSucceed();
         homePage .searchField()
                 .provideViewAll()
                 .choiceSong()
