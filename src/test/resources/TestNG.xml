@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="TestNG" parallel="methods" thread-count="3">
 
-<suite name="TestNG">
+
     <parameter name="BaseURL" value ="https://qa.koel.app"/>
-
     <test name="Example Test" preserve-order="false">
+        <parameter name="browser" value="firefox"/>
+        <parameter name="browser" value="chrome"/>
+        <parameter name="browser" value="safari"/>
+
         <classes>
             <class name="LoginTests"/>
             <class name="BaseTest"/>
-            <class name="ProfileTests"/>
-            <class name="HomeTest"/>
-           <!-- <class name="Homework20"/>
+            <!--class name="ProfileTests"/>-->
+            <class name="Homework20"/>
             <class name="Homework21"/>
-            <class name="Homework22"/>
-            <class name="Homework23"/>-->
+            <class name="Homework23"/>
             <class name="Homework24"/>
+
         </classes>
     </test>
 </suite>
-
 

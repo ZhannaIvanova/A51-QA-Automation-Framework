@@ -1,5 +1,3 @@
-import Pages.HomePage;
-import Pages.LoginPage;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
@@ -12,11 +10,11 @@ public class Homework23 extends BaseTest {
 
         String updatedPlaylistName= "Updated playlist \"Love4.\"";
 
-        LoginPage loginPage= new LoginPage(driver);
-        HomePage homePage = new HomePage(driver);
+        //LoginPage loginPage= new LoginPage(driver);
+        //HomePage homePage = new HomePage(driver);
 
-        loginPage.provideEmail("zhanna.ivanova@testpro.io");
-        loginPage.providePassword("12345678");
+        //loginPage.provideEmail("zhanna.ivanova@testpro.io");
+        //loginPage.providePassword("12345678");
         //loginPage.clickSubmit();
 
        // homePage.contextClickPlaylist(locator);
