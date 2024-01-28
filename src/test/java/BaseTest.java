@@ -2,17 +2,16 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.*;
 
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -31,23 +30,12 @@ public class BaseTest {
     public static WebDriver getThreadLocal(){
         return THREAD_LOCAL.get();
     }
-    //commented out for now
-    //public static WebDriver driver;
+
     public static String url;
     public WebDriverWait wait;
     public static Actions actions = null;
 
 
-//commented out for now
-    /**
-     Setup WebDriverManager for ChromeDriver
-     @BeforeSuite
-     static void setupClass() {
-     WebDriverManager.chromedriver().setup();
-     }
-     **/
-
-    //Launch browser(s) and navigate to BaseUrl
     @BeforeMethod
     @Parameters({"BaseURL"})
     //added for cloud test
@@ -55,7 +43,7 @@ public class BaseTest {
         THREAD_LOCAL.set(pickBrowser(System.getProperty("browser")));
         THREAD_LOCAL.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         THREAD_LOCAL.get().manage().window().maximize();
-        //THREAD_LOCAL.get().manage().deleteAllCookies();
+        THREAD_LOCAL.get().manage().deleteAllCookies();
         getThreadLocal().get(baseURL);
         System.out.println("Browser setup by Thread " + Thread.currentThread().getId() + " and Driver reference is: " + getThreadLocal());
     }
@@ -63,15 +51,15 @@ public class BaseTest {
     public WebDriver lambdaTest() throws MalformedURLException{
         String username = "zhanna.ivanova";
         String authkey = "jEo67fsZEJk6ilP8WkNG23XjKbBefaiaJp7WunaYYIjkINmlOG";
-        String hub = "https://hub.lambdatest.com/wd/hub";
+        String hub = "@hub.lambdatest.com/wd/hub";
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability("platform", "Windows 10");
         caps.setCapability("browserName", "Chrome");
-        caps.setCapability("version", "120.0");
-        caps.setCapability("resolution", "2560x1440");
+        caps.setCapability("version", "110.0");
+        caps.setCapability("resolution", "1024x768");
         caps.setCapability("build", "TestNG with Java");
         caps.setCapability("name", this.getClass().getName());
-        caps.setCapability("plugin", "java-testNG");
+        caps.setCapability("plugin", "git-testing");
         return new RemoteWebDriver(new URL("https://" + username + ":" + authkey + hub), caps);
     }
     public WebDriver pickBrowser(String browser) throws MalformedURLException {
@@ -79,19 +67,19 @@ public class BaseTest {
         String gridURL = "http://10.2.127.17:4444";
 
         switch (browser) {
-            case "Safari":
-                WebDriverManager.safaridriver().setup();
-                return driver = new SafariDriver();
             case "firefox":
                 WebDriverManager.firefoxdriver().setup();
                 FirefoxOptions optionsFirefox = new FirefoxOptions();
                 optionsFirefox.addArguments("-private");
                 return driver = new FirefoxDriver(optionsFirefox);
-            case "grid-Safari":
-                capabilities.setCapability("browserName", "Safari");
-                return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), capabilities);
+            case "edge":
+                WebDriverManager.edgedriver().setup();
+                return driver = new EdgeDriver();
             case "grid-firefox":
                 capabilities.setCapability("browserName", "firefox");
+                return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), capabilities);
+            case "grid-edge":
+                capabilities.setCapability("browserName", "edge  ");
                 return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), capabilities);
             case "grid-chrome":
                 capabilities.setCapability("browserName", "chrome");
