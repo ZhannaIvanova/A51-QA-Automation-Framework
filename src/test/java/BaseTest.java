@@ -23,13 +23,20 @@ import java.time.Duration;
 
 public class BaseTest {
     //added for cloud test
+
+
     private static final ThreadLocal<WebDriver> THREAD_LOCAL = new ThreadLocal<>();
     //added for cloud test
     private WebDriver driver;
+
     //added for cloud test
     public static WebDriver getThreadLocal(){
         return THREAD_LOCAL.get();
     }
+
+    /*public static WebDriver getDriver(){
+        return threadDriver.get();
+    }*/
 
     public static String url;
     public WebDriverWait wait;
