@@ -1,8 +1,8 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -77,7 +77,7 @@ public class BaseTest {
         return threadDriver.get();
     }
 
-    public static WebDriver pickBrowser(String browser) throws MalformedURLException {
+    public WebDriver pickBrowser(String browser) throws MalformedURLException {
 
         DesiredCapabilities caps = new DesiredCapabilities();
         String gridURL = "http://10.0.0.206:4444";
@@ -94,7 +94,7 @@ public class BaseTest {
                 return driver = new EdgeDriver(edgeOptions);
 
             //Selenium Grid
-            case "grid-edge": // gradle cleam test -Dbrowser=grid-edge
+            case "grid-edge": // gradle clean test -Dbrowser=grid-edge
                 caps.setCapability("browser", "MicrosoftEdge");
                 return driver = new RemoteWebDriver(URI.create(gridURL).toURL(),caps);
 
@@ -107,7 +107,7 @@ public class BaseTest {
                 return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
 
             case "cloud":
-                return lambdaTest();
+                return lamdaTest();
 
             default:
                 WebDriverManager.chromedriver().setup();
@@ -118,7 +118,7 @@ public class BaseTest {
     }
 
     //added for cloud test
-    public WebDriver lambdaTest() throws MalformedURLException{
+    public WebDriver lamdaTest() throws MalformedURLException{
         String username = "zhanna.ivanova";
         String authkey = "jEo67fsZEJk6ilP8WkNG23XjKbBefaiaJp7WunaYYIjkINmlOG";
         String hub = "@hub.lambdatest.com/wd/hub";
