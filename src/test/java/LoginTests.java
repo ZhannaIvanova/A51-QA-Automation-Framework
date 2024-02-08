@@ -15,8 +15,8 @@ public class LoginTests extends BaseTest {
         LoginPage loginPage = new LoginPage(getDriver());
         HomePage homePage = new HomePage(getDriver());
 
-        loginPage.provideEmail("demo@class.com")
-                .providePassword("te$t$tudent")
+        loginPage.provideEmail("zhanna.ivanova@testpro.io")
+                .providePassword("12345678")
                 .clickSubmitBtn();
 //        WebElement avatar = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("img[class='avatar']")));
 //        Assert.assertTrue(loginPage.getRegistrationLink().isDisplayed());
