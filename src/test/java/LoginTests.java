@@ -27,7 +27,7 @@ public class LoginTests extends BaseTest {
         LoginPage loginPage = new LoginPage(getDriver());
 
         loginPage.provideEmail("")
-                .providePassword("te$t$tudent")
+                .providePassword("12345678")
                 .clickSubmitBtn();
         Assert.assertTrue(loginPage.getRegistrationLink().isDisplayed());
     }
